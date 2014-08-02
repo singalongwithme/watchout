@@ -17,3 +17,15 @@ var moveEnemy = function(){
 };
 
 setInterval(function(){moveEnemy()}, 2000);
+
+var drag = d3.behavior.drag()
+    .on("drag", dragmove);
+
+function dragmove() {
+  var x = d3.event.x - 100;
+  var y = d3.event.y - 100;
+  //d3.select(this).attr("transform", "translate(" + x + "," + y + ")");
+  d3.select(this).attr("transform", 'translate(' + x + ',' + y + ')');
+};
+
+d3.select('.player').call(drag);
