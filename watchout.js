@@ -9,3 +9,11 @@ d3.select('.enemyGroup').selectAll('.enemies').data([1]).enter()
 .append('circle').classed('enemies', true).attr('cx', function(data){
 return data;}).attr('cy', function(data){return Math.random() * 400})
 .attr('r', 6).attr('fill', 'teal');
+
+var moveEnemy = function(){
+  d3.selectAll('.enemies').data(enemyArray).transition().duration(1500)
+  .attr('cx', function(data){return Math.random() * 720;})
+  .attr('cy', function(data){return Math.random() * 400;});
+};
+
+setInterval(function(){moveEnemy()}, 2000);
